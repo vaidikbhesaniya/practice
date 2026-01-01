@@ -6,7 +6,12 @@ const { queryUsers } = require('../controllers/userController');
 
 const { updateUser } = require('../controllers/userController');
 const { removeUser } = require('../controllers/userController');
+const { bulkWriteUsers } = require('../controllers/userController');
 
+
+
+
+router.post('/bulk-write', bulkWriteUsers);
 
 router.delete('/remove/:id', removeUser);
 

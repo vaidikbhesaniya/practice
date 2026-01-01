@@ -62,6 +62,15 @@ const updateUser = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+const bulkWriteUsers = async (req, res) => {
+  const operations = req.body; // Array of operations
 
-module.exports = { updateUser, queryUsers, insertUser, registerUser, getUsers };
+  try {
+    const result = await User.bulkWrite(operations);
+    res.status(200).json({ message: 'Bulk write successful', result });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
+module.exports = { bulkWriteUsers, updateUser, queryUsers, insertUser, registerUser, getUsers };
